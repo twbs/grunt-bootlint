@@ -9,41 +9,59 @@
 'use strict';
 
 module.exports = function(grunt) {
+  var bootlint = require('../node_modules/bootlint/src/bootlint'); // Explicit since the search algo fails on the bootlint directory structure
+  var colors = require('colors');
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  colors.setTheme({
+    ok: 'green',
+    error: 'red',
+    warning: 'yellow'
+  });
+
+  var msg = {
+    start: 'Validation started for '.ok,
+    ok: 'Validation successful!'.ok,
+    error: 'Error:'.error,
+    done: 'All Done!'.bold.ok
+  };
+
+  var totalErrCount = 0;
+
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
+      stoponerror: false
     });
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
+
+      f.src.filter(function(filepath) {
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
           return false;
         } else {
           return true;
         }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
 
-      // Handle options.
-      src += options.punctuation;
+      })
+      .forEach(function(filepath) {
+        var src = grunt.file.read(filepath);
 
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
+        var errs = bootlint.lintHtml(src);
+        totalErrCount += errs.length;
 
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+        errs.forEach(function (msg) {
+          grunt.log.warn(filepath + ':', msg.error);
+          if (options.stoponerror) return;
+        });
+      });
+
+      if (totalErrCount > 0) {
+        grunt.log.warn(totalErrCount + ' lint errors found.');
+      } else {
+        grunt.log.writeln(msg.done);
+      }
     });
   });
 
