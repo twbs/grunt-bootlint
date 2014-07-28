@@ -26,10 +26,11 @@ In your project's Gruntfile, add a section named `bootlint` to the data object p
 grunt.initConfig({
   bootlint: {
     options: {
-      // Task-specific options go here.
+      stoponerror: false,
+      relaxerror: []
     },
-    your_target: {
-      // Target-specific file lists and/or options go here.
+    files: {
+      ['path/to/file.html', 'path/to/*.html'];
     },
   },
 });
@@ -40,14 +41,14 @@ grunt.initConfig({
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used to lint two files for common errors in bootstrap.
 
 ```js
 grunt.initConfig({
   bootlint: {
     options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      ['test/fixtures/**.html'],
     },
   },
 });
