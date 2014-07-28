@@ -30,7 +30,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
     var options = this.options({
-      stoponerror: true // not implemented yet...
+      stoponerror: false
     });
 
     // Iterate over all specified file groups.
@@ -52,7 +52,11 @@ module.exports = function(grunt) {
         totalErrCount += errs.length;
 
         errs.forEach(function (msg) {
-          grunt.log.warn(filepath + ':', msg.error);
+          if (options.stoponerror) {
+            grunt.fail.warn(filepath + ':' + msg.error);
+          } else {
+            grunt.log.warn(filepath + ':', msg.error);
+          }
         });
       });
 
