@@ -25,8 +25,6 @@ module.exports = function(grunt) {
     done: 'All Done!'.bold.ok
   };
 
-
-
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
     var options = this.options({
       stoponerror: false,
@@ -48,21 +46,32 @@ module.exports = function(grunt) {
       })
       .forEach(function(filepath) {
         var src = grunt.file.read(filepath);
-
         var errs = bootlint.lintHtml(src);
-        totalErrCount += errs.length;
 
-        errs.forEach(function (msg) {
+        grunt.log.writeln(msg.start + filepath.ok);
+
+        // Remove relaxed errors
+        if (options.relaxerror.length) {
+          errs = errs.filter(function(elem) {
+            return options.relaxerror.indexOf(elem) < 0;
+          });
+        }
+
+        errs.forEach(function (err) {
+          totalErrCount += errs.length;
           if (options.stoponerror) {
-            grunt.fail.warn(filepath + ':' + msg.error);
+            grunt.fail.warn(filepath + ':' + err.error);
           } else {
-            grunt.log.warn(filepath + ':', msg.error);
+            grunt.log.warn(filepath + ':', err.error);
           }
         });
+
+        if (!errs.length) { grunt.log.writeln(filepath.ok + ' is OK!'.ok); }
+
       });
 
       if (totalErrCount > 0) {
-        grunt.log.warn(totalErrCount + ' lint errors found.');
+        grunt.log.writeln(totalErrCount + ' lint errors found.');
       } else {
         grunt.log.writeln(msg.done);
       }

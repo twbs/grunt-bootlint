@@ -46,12 +46,47 @@ In this example, the default options are used to lint two files for common error
 ```js
 grunt.initConfig({
   bootlint: {
-    options: {},
+    options: {
+      stoponerror: false,
+      relaxerror: []
+    },
     files: {
       ['test/fixtures/**.html'],
     },
   },
 });
+```
+
+### Settings
+
+#### options.stoponerror
+
+* Type: `Boolean`
+* Default: `false`
+
+Breaks out of grunt task on first error. Use `--force` to force continue.
+
+#### options.relaxerror
+
+* Type: `Array`
+* Default: `[]`
+
+Array of bootlint messages (`String`s) to explicitly ignore.
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      relaxerror: ['Document is missing a DOCTYPE declaration']
+    },
+    files: {
+      ['test/fixtures/**.html'],
+    },
+  },
+});
+
 ```
 
 ## Contributing
