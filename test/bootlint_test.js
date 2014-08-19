@@ -1,6 +1,7 @@
 'use strict';
 
 var grunt = require('grunt');
+var path = require('path');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -28,21 +29,44 @@ exports.bootlint = {
     done();
   },
   default_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
-
-    test.done();
+    test.expect(3);
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:default_options', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf("test/fixtures/missing-doctype.html") >= 0,
+        'Should print file path');
+      test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") >= 0,
+        'Should warn about missing a DOCTYPE');
+      test.ok(result.stdout.indexOf("2 lint errors found") >= 0,
+        'Should print number of lint errors');
+      test.done();
+    });
   },
   custom_options: function(test) {
+    test.expect(3);
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:custom_options', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf("test/fixtures/missing-doctype.html") === -1,
+        'Should not print this file path');
+      test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") === -1,
+        'Should not warn about missing a DOCTYPE');
+      test.ok(result.stdout.indexOf("1 lint errors found") >= 0,
+        'Should print correct number of lint errors');
+      test.done();
+    });
+  },
+  pass: function(test) {
     test.expect(1);
-
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
-
-    test.done();
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:pass', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf("All Done!") >= 0,
+        'Should print All Done! message');
+      test.done();
+    });
   },
 };

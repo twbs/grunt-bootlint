@@ -25,13 +25,14 @@ module.exports = function(grunt) {
     done: 'All Done!'.bold.ok
   };
 
-  var totalErrCount = 0;
 
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
     var options = this.options({
-      stoponerror: false
+      stoponerror: false,
+      relaxerror: []
     });
+    var totalErrCount = 0;
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {

@@ -30,7 +30,33 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     bootlint: {
-      files: ['test/fixtures/missing-doctype']
+      default_options: {
+        options: {
+        },
+        files: {
+          'tmp/default_options': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+          ]
+        }
+      },
+      custom_options: {
+        options: {
+          relaxerror: ['Document is missing a DOCTYPE declaration'],
+        },
+        files: {
+          'tmp/default_options': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+          ]
+        }
+      },
+      pass: {
+        options: {},
+        files: {
+          'tmp/pass': 'test/fixtures/pass.html'
+        },
+      },
     },
 
     // Unit tests.
