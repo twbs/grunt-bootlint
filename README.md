@@ -1,6 +1,11 @@
 # grunt-bootlint
 
-> An HTML linter for Bootstrap projects
+> A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](http://getbootstrap.com) projects
+
+[![NPM version](https://badge.fury.io/js/grunt-bootlint.svg)](http://badge.fury.io/js/grunt-bootlint)
+[![Build Status](https://travis-ci.org/zacechola/grunt-bootlint.svg?branch=master)](https://travis-ci.org/zacechola/grunt-bootlint)
+[![Dependency Status](https://david-dm.org/zacechola/grunt-bootlint.svg)](https://david-dm.org/zacechola/grunt-bootlint)
+[![devDependency Status](https://david-dm.org/zacechola/grunt-bootlint/dev-status.svg)](https://david-dm.org/zacechola/grunt-bootlint#info=devDependencies)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
