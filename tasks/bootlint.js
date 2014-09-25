@@ -9,7 +9,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var bootlint = require('../node_modules/bootlint/src/bootlint'); // Explicit since the search algo fails on the bootlint directory structure
+  var bootlint = require('bootlint');
   var colors = require('colors');
 
   colors.setTheme({
