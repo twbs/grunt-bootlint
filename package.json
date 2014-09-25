@@ -1,7 +1,7 @@
 {
   "name": "grunt-bootlint",
   "description": "An HTML linter for Bootstrap projects",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/zacechola/grunt-bootlint",
   "author": {
     "name": "Zac Echola",
