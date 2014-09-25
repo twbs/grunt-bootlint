@@ -1,7 +1,6 @@
 'use strict';
 
 var grunt = require('grunt');
-var path = require('path');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
