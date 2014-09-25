@@ -5,9 +5,10 @@
   "latedef": true,
   "newcap": true,
   "noarg": true,
+  "node": true,
+  "nonbsp": true,
+  "strict": true,
   "sub": true,
   "undef": true,
-  "boss": true,
-  "eqnull": true,
-  "node": true
+  "unused": true
 }
