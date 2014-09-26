@@ -34,9 +34,7 @@ grunt.initConfig({
       stoponerror: false,
       relaxerror: []
     },
-    files: {
-      ['path/to/file.html', 'path/to/*.html'];
-    },
+    files: ['path/to/file.html', 'path/to/*.html'],
   },
 });
 ```
@@ -55,9 +53,7 @@ grunt.initConfig({
       stoponerror: false,
       relaxerror: []
     },
-    files: {
-      ['test/fixtures/**.html'],
-    },
+    files: ['test/fixtures/**.html'],
   },
 });
 ```
@@ -86,9 +82,7 @@ grunt.initConfig({
     options: {
       relaxerror: ['Document is missing a DOCTYPE declaration']
     },
-    files: {
-      ['test/fixtures/**.html'],
-    },
+    files: ['test/fixtures/**.html'],
   },
 });
 
