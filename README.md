@@ -94,3 +94,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 - 2014-09-25 - v0.2.0: First formal release.
+- 2014-09-25 - v0.2.1: Removes color dependency.
