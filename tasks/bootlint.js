@@ -11,12 +11,6 @@
 module.exports = function(grunt) {
   var bootlint = require('bootlint');
 
-  var msg = {
-    start: 'Validation started for ',
-    ok: 'Validation successful!',
-    done: 'No Bootlint errors!'.bold
-  };
-
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
     var options = this.options({
       stoponerror: false,
@@ -40,7 +34,7 @@ module.exports = function(grunt) {
         var src = grunt.file.read(filepath);
         var errs = bootlint.lintHtml(src);
 
-        grunt.log.writeln(msg.start + filepath);
+        grunt.verbose.writeln('Validation started for ' + filepath);
 
         // Remove relaxed errors
         if (options.relaxerror.length) {
@@ -58,14 +52,16 @@ module.exports = function(grunt) {
           }
         });
 
-        if (!errs.length) { grunt.log.ok(filepath + ' is OK! \n'); }
+        if (!errs.length) {
+          grunt.verbose.ok(filepath + ' is OK!\n');
+        }
 
       });
 
       if (totalErrCount > 0) {
-        grunt.log.writeln().fail(totalErrCount + ' lint errors found.');
+        grunt.fail.warn(totalErrCount + ' lint errors found.');
       } else {
-        grunt.log.writeln().success(msg.done);
+        grunt.verbose.ok('No Bootlint errors!');
       }
     });
   });
