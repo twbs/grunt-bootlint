@@ -33,8 +33,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "bootlint": "^0.2.0",
-    "colors": "^0.6.2"
+    "bootlint": "^0.2.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

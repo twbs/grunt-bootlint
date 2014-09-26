@@ -67,8 +67,8 @@ exports.bootlint = {
     }, function(err, result) {
       test.ok(result.stdout.indexOf("is OK") >= 0,
         'Should print filepath is OK!');
-      test.ok(result.stdout.indexOf("All Done!") >= 0,
-        'Should print All Done! message');
+      test.ok(result.stdout.indexOf("No Bootlint errors!") >= 0,
+        'Should print "No Bootlint errors!" message');
       test.done();
     });
   },

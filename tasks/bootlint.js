@@ -10,19 +10,11 @@
 
 module.exports = function(grunt) {
   var bootlint = require('bootlint');
-  var colors = require('colors');
-
-  colors.setTheme({
-    ok: 'green',
-    error: 'red',
-    warning: 'yellow'
-  });
 
   var msg = {
-    start: 'Validation started for '.ok,
-    ok: 'Validation successful!'.ok,
-    error: 'Error:'.error,
-    done: 'All Done!'.bold.ok
+    start: 'Validation started for ',
+    ok: 'Validation successful!',
+    done: 'No Bootlint errors!'.bold
   };
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
@@ -48,7 +40,7 @@ module.exports = function(grunt) {
         var src = grunt.file.read(filepath);
         var errs = bootlint.lintHtml(src);
 
-        grunt.log.writeln(msg.start + filepath.ok);
+        grunt.log.writeln(msg.start + filepath);
 
         // Remove relaxed errors
         if (options.relaxerror.length) {
@@ -60,20 +52,20 @@ module.exports = function(grunt) {
         errs.forEach(function (err) {
           totalErrCount += errs.length;
           if (options.stoponerror) {
-            grunt.fail.warn(filepath + ':' + err.error);
+            grunt.fail.warn(filepath + ':' + err);
           } else {
-            grunt.log.warn(filepath + ':', err.error);
+            grunt.log.warn(filepath + ':', err);
           }
         });
 
-        if (!errs.length) { grunt.log.writeln(filepath.ok + ' is OK!'.ok); }
+        if (!errs.length) { grunt.log.ok(filepath + ' is OK! \n'); }
 
       });
 
       if (totalErrCount > 0) {
-        grunt.log.writeln(totalErrCount + ' lint errors found.');
+        grunt.log.writeln().fail(totalErrCount + ' lint errors found.');
       } else {
-        grunt.log.writeln(msg.done);
+        grunt.log.writeln().success(msg.done);
       }
     });
   });
