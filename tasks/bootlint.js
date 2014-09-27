@@ -21,16 +21,22 @@ module.exports = function(grunt) {
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
 
-      f.src.filter(function(filepath) {
+      var sourceFiles = f.src.filter(function(filepath) {
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
+          grunt.fail.warn('Source file "' + filepath + '" not found!');
           return false;
         } else {
           return true;
         }
 
       })
-      .forEach(function(filepath) {
+
+      if (sourceFiles.length === 0) {
+        grunt.fail.warn('Source files (' + f.dest + ') not found!');
+        return false;
+      }
+
+      sourceFiles.forEach(function(filepath) {
         var src = grunt.file.read(filepath);
         var errs = bootlint.lintHtml(src);
 
