@@ -46,7 +46,7 @@ exports.bootlint = {
     test.expect(2);
     grunt.util.spawn({
       grunt: true,
-      args: ['bootlint:custom_options', '--no-color --verbose'],
+      args: ['bootlint:custom_options', '--no-color'],
     }, function(err, result) {
       test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") === -1,
         'Should not warn about missing a DOCTYPE');
