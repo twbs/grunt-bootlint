@@ -28,13 +28,11 @@ exports.bootlint = {
     done();
   },
   default_options: function(test) {
-    test.expect(4);
+    test.expect(3);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:default_options', '--no-color'],
     }, function(err, result) {
-      test.ok(result.stdout.indexOf("Validation started for") >= 0,
-        'Should print start msg');
       test.ok(result.stdout.indexOf("test/fixtures/missing-doctype.html") >= 0,
         'Should print file path');
       test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") >= 0,

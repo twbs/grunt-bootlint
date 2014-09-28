@@ -29,7 +29,7 @@ module.exports = function(grunt) {
           return true;
         }
 
-      })
+      });
 
       if (sourceFiles.length === 0) {
         grunt.fail.warn('Source files (' + f.dest + ') not found!');
@@ -39,8 +39,6 @@ module.exports = function(grunt) {
       sourceFiles.forEach(function(filepath) {
         var src = grunt.file.read(filepath);
         var errs = bootlint.lintHtml(src);
-
-        grunt.verbose.writeln('Validation started for ' + filepath);
 
         // Remove relaxed errors
         if (options.relaxerror.length) {
@@ -69,6 +67,7 @@ module.exports = function(grunt) {
       } else {
         grunt.verbose.ok('No Bootlint errors!');
       }
+
     });
   });
 
