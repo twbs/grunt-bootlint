@@ -56,16 +56,12 @@ module.exports = function(grunt) {
           }
         });
 
-        if (!errs.length) {
-          grunt.verbose.ok(filepath + ' is OK!\n');
-        }
-
       });
 
       if (totalErrCount > 0) {
         grunt.fail.warn(totalErrCount + ' lint errors found.');
       } else {
-        grunt.verbose.ok('No Bootlint errors!');
+        grunt.log.success('No Bootlint errors!');
       }
 
     });
