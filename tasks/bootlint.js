@@ -61,7 +61,7 @@ module.exports = function(grunt) {
       if (totalErrCount > 0) {
         grunt.fail.warn(totalErrCount + ' lint errors found.');
       } else {
-        grunt.log.success('No Bootlint errors!');
+        grunt.log.ok('No Bootlint errors!');
       }
 
     });
