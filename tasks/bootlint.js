@@ -10,6 +10,7 @@
 
 module.exports = function(grunt) {
   var bootlint = require('bootlint');
+  var chalk = require('chalk');
 
   var msg = {
     start: 'Validation started for ',
@@ -23,6 +24,17 @@ module.exports = function(grunt) {
       relaxerror: []
     });
     var totalErrCount = 0;
+
+    var reporter = function(lint) {
+      var lintId = (lint.id[0] === 'E') ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
+      if (options.stoponerror) {
+        grunt.fail.warn(lintId, lint.message);
+      } else {
+        grunt.log.warn(lintId, lint.message);
+        totalErrCount++;
+      }
+    };
+
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
@@ -38,32 +50,13 @@ module.exports = function(grunt) {
       })
       .forEach(function(filepath) {
         var src = grunt.file.read(filepath);
-        var errs = bootlint.lintHtml(src);
-
         grunt.log.writeln(msg.start + filepath);
-
-        // Remove relaxed errors
-        if (options.relaxerror.length) {
-          errs = errs.filter(function(elem) {
-            return options.relaxerror.indexOf(elem) < 0;
-          });
-        }
-
-        errs.forEach(function (err) {
-          totalErrCount += errs.length;
-          if (options.stoponerror) {
-            grunt.fail.warn(filepath + ':' + err);
-          } else {
-            grunt.log.warn(filepath + ':', err);
-          }
-        });
-
-        if (!errs.length) { grunt.log.ok(filepath + ' is OK! \n'); }
-
+        bootlint.lintHtml(src, reporter, options.relaxerror);
       });
 
       if (totalErrCount > 0) {
         grunt.log.writeln().fail(totalErrCount + ' lint errors found.');
+        grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
       } else {
         grunt.log.writeln().success(msg.done);
       }

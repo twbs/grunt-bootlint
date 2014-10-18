@@ -45,28 +45,24 @@ exports.bootlint = {
     });
   },
   custom_options: function(test) {
-    test.expect(3);
+    test.expect(2);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:custom_options', '--no-color'],
     }, function(err, result) {
       test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") === -1,
         'Should not warn about missing a DOCTYPE');
-      test.ok(result.stdout.indexOf("is OK") >= 0,
-        'Should print filepath is OK!');
       test.ok(result.stdout.indexOf("1 lint errors found") >= 0,
         'Should print correct number of lint errors');
       test.done();
     });
   },
   pass: function(test) {
-    test.expect(2);
+    test.expect(1);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:pass', '--no-color'],
     }, function(err, result) {
-      test.ok(result.stdout.indexOf("is OK") >= 0,
-        'Should print filepath is OK!');
       test.ok(result.stdout.indexOf("No Bootlint errors!") >= 0,
         'Should print "No Bootlint errors!" message');
       test.done();
