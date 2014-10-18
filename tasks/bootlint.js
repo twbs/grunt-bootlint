@@ -10,8 +10,7 @@
 
 module.exports = function(grunt) {
   var bootlint = require('bootlint');
-
-
+  var chalk = require('chalk');
 
   var msg = {
     start: 'Validation started for ',
@@ -27,11 +26,12 @@ module.exports = function(grunt) {
     var totalErrCount = 0;
 
     var reporter = function(lint) {
+      var lintId = (lint.id[0] === 'E') ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
       if (options.stoponerror) {
-        grunt.fail.warn(lint.message);
+        grunt.fail.warn(lintId, lint.message);
       } else {
-        totalErrCount += 1;
-        grunt.log.warn(lint.message);
+        grunt.log.warn(lintId, lint.message);
+        totalErrCount++;
       }
     };
 
@@ -56,6 +56,7 @@ module.exports = function(grunt) {
 
       if (totalErrCount > 0) {
         grunt.log.writeln().fail(totalErrCount + ' lint errors found.');
+        grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
       } else {
         grunt.log.writeln().success(msg.done);
       }
