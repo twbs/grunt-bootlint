@@ -72,7 +72,7 @@ Breaks out of grunt task on first error. Use `--force` to force continue.
 * Type: `Array`
 * Default: `[]`
 
-Array of bootlint messages (`String`s) to explicitly ignore.
+Array of [bootlint error codes](https://github.com/twbs/bootlint/wiki) (`String`s) to explicitly ignore.
 
 Example:
 
@@ -93,5 +93,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-- 2014-09-25 - v0.2.0: First formal release.
+- 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes `relaxerror` to use Bootlint error codes**
 - 2014-09-25 - v0.2.1: Removes color dependency.
+- 2014-09-25 - v0.2.0: First formal release.

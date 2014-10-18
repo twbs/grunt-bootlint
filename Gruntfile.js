@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       },
       custom_options: {
         options: {
-          relaxerror: ['Document is missing a DOCTYPE declaration'],
+          relaxerror: ['E001'],
         },
         files: {
           'tmp/default_options': [

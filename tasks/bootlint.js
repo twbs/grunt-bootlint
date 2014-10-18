@@ -11,6 +11,8 @@
 module.exports = function(grunt) {
   var bootlint = require('bootlint');
 
+
+
   var msg = {
     start: 'Validation started for ',
     ok: 'Validation successful!',
@@ -23,6 +25,16 @@ module.exports = function(grunt) {
       relaxerror: []
     });
     var totalErrCount = 0;
+
+    var reporter = function(lint) {
+      if (options.stoponerror) {
+        grunt.fail.warn(lint.message);
+      } else {
+        totalErrCount += 1;
+        grunt.log.warn(lint.message);
+      }
+    };
+
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
@@ -38,28 +50,8 @@ module.exports = function(grunt) {
       })
       .forEach(function(filepath) {
         var src = grunt.file.read(filepath);
-        var errs = bootlint.lintHtml(src);
-
         grunt.log.writeln(msg.start + filepath);
-
-        // Remove relaxed errors
-        if (options.relaxerror.length) {
-          errs = errs.filter(function(elem) {
-            return options.relaxerror.indexOf(elem) < 0;
-          });
-        }
-
-        errs.forEach(function (err) {
-          totalErrCount += errs.length;
-          if (options.stoponerror) {
-            grunt.fail.warn(filepath + ':' + err);
-          } else {
-            grunt.log.warn(filepath + ':', err);
-          }
-        });
-
-        if (!errs.length) { grunt.log.ok(filepath + ' is OK! \n'); }
-
+        bootlint.lintHtml(src, reporter, options.relaxerror);
       });
 
       if (totalErrCount > 0) {
