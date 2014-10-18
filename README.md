@@ -72,7 +72,7 @@ Breaks out of grunt task on first error. Use `--force` to force continue.
 * Type: `Array`
 * Default: `[]`
 
-Array of [bootlint error codes](https://github.com/twbs/bootlint/wiki) (`String`s) to explicitly ignore.
+Array of [bootlint problem ID codes](https://github.com/twbs/bootlint/wiki) (`String`s) to explicitly ignore.
 
 Example:
 
