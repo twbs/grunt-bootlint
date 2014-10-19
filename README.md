@@ -7,6 +7,8 @@
 [![Dependency Status](https://david-dm.org/zacechola/grunt-bootlint.svg)](https://david-dm.org/zacechola/grunt-bootlint)
 [![devDependency Status](https://david-dm.org/zacechola/grunt-bootlint/dev-status.svg)](https://david-dm.org/zacechola/grunt-bootlint#info=devDependencies)
 
+[![NPM](https://nodei.co/npm/grunt-bootlint.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/grunt-bootlint/)
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
