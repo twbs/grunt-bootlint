@@ -80,7 +80,7 @@ Example:
 grunt.initConfig({
   bootlint: {
     options: {
-      relaxerror: ['Document is missing a DOCTYPE declaration']
+      relaxerror: ['W001', 'E001']
     },
     files: ['test/fixtures/**.html'],
   },
