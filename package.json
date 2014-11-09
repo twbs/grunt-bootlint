@@ -33,7 +33,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "bootlint": "^0.7.0",
+    "bootlint": "^0.8.0",
     "chalk": "^0.5.1"
   },
   "devDependencies": {
