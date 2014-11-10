@@ -95,6 +95,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 2014-11-10 - v0.5.0: Updates Bootlint, adds line/col numbers to output, quieter output.
 - 2014-11-03 - v0.4.0: Updates Bootlint dependency.
 - 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes
 `relaxerror` to use Bootlint problem IDs**
