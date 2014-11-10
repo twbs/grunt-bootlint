@@ -35,8 +35,7 @@ module.exports = function(grunt) {
         },
         files: {
           'tmp/default_options': [
-            'test/fixtures/missing-doctype.html',
-            'test/fixtures/missing-charset.html',
+            'test/fixtures/**.html',
           ]
         }
       },
