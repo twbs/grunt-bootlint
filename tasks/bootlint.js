@@ -55,7 +55,7 @@ module.exports = function(grunt) {
           }
 
           if (options.stoponerror) {
-            grunt.fail.warn('boom!');
+            grunt.fail.warn('Too many bootlint errors.');
           }
         };
 
