@@ -54,5 +54,16 @@ exports.bootlint = {
         'Should print correct number of lint errors and files');
       test.done();
     });
+  },
+  pass: function(test) {
+    test.expect(1);
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:pass', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf('1 file(s) lint free.') >= 0,
+        'Should print correct number of lint free files');
+      test.done();
+    });
   }
 };

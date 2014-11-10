@@ -68,6 +68,8 @@ module.exports = function(grunt) {
         if (hardfail) {
           grunt.fail.warn('Too many bootlint errors.');
         }
+      } else {
+        grunt.log.ok(totalFileCount + ' file(s) lint free.');
       }
     });
   });
