@@ -67,7 +67,7 @@ grunt.initConfig({
 * Type: `Boolean`
 * Default: `false`
 
-Breaks out of grunt task on first error. Use `--force` to force continue.
+Breaks out of grunt task if there are errors. Use `--force` to force continue.
 
 #### options.relaxerror
 
