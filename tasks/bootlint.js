@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 
     var totalErrCount = 0;
     var totalFileCount = 0;
+    var hardfail = false;
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
@@ -51,6 +52,9 @@ module.exports = function(grunt) {
           if (!output) {
             grunt.log.warn(filepath + ":", lintId, lint.message);
             totalErrCount++;
+            if (options.stoponerror) {
+              hardfail = true;
+            }
           }
         };
 
@@ -61,7 +65,7 @@ module.exports = function(grunt) {
       if (totalErrCount > 0) {
         grunt.log.writeln().fail(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s).");
         grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
-        if (options.stoponerror) {
+        if (hardfail) {
           grunt.fail.warn('Too many bootlint errors.');
         }
       } else {
