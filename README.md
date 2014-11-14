@@ -53,6 +53,7 @@ grunt.initConfig({
   bootlint: {
     options: {
       stoponerror: false,
+      stoponwarning: false,
       relaxerror: []
     },
     files: ['test/fixtures/**.html'],
@@ -67,7 +68,41 @@ grunt.initConfig({
 * Type: `Boolean`
 * Default: `false`
 
-Breaks out of grunt task on first error. Use `--force` to force continue.
+Breaks out of grunt task on first error problem ID. Use `--force` to force continue.
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      stoponerror: true
+    },
+    files: ['test/fixtures/**.html'],
+  },
+});
+```
+
+#### options.stoponwarning
+
+* Type: `Boolean`
+* Default: `false`
+
+Breaks out of grunt task on first warning problem ID. Use `--force` to force continue.
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      stoponwarning: true
+    },
+    files: ['test/fixtures/**.html'],
+  },
+});
+```
+
 
 #### options.relaxerror
 
