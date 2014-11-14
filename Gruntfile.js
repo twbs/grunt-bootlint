@@ -39,14 +39,49 @@ module.exports = function(grunt) {
           ]
         }
       },
-      custom_options: {
+      relaxerror: {
         options: {
           relaxerror: ['E001'],
         },
         files: {
-          'tmp/default_options': [
+          'tmp/relaxerror': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
+          ]
+        }
+      },
+     stoponerror: {
+        options: {
+          stoponerror: true,
+        },
+        files: {
+          'tmp/stoponerror': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+            'test/fixtures/cols-redundant.html',
+          ]
+        }
+      },
+      stoponwarning: {
+        options: {
+          stoponwarning: true,
+        },
+        files: {
+          'tmp/stoponwarning': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+            'test/fixtures/cols-redundant.html',
+          ]
+        }
+      },
+      stoponboth: {
+        options: {
+          stoponwarning: true,
+          stoponerror: true,
+        },
+        files: {
+          'tmp/stoponboth': [
+            'test/fixtures/**.html',
           ]
         }
       },
