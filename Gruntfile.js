@@ -74,6 +74,31 @@ module.exports = function(grunt) {
           ]
         }
       },
+      showallerrors: {
+        options: {
+          showallerrors: true,
+        },
+        files: {
+          'tmp/stoponwarning': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+            'test/fixtures/cols-redundant.html',
+          ]
+        }
+      },
+      showallerrorswithstop: {
+        options: {
+          showallerrors: true,
+          stoponwarning: true,
+        },
+        files: {
+          'tmp/stoponwarning': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+            'test/fixtures/cols-redundant.html',
+          ]
+        }
+      },
       stoponboth: {
         options: {
           stoponwarning: true,
