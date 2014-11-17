@@ -42,16 +42,57 @@ exports.bootlint = {
       test.done();
     });
   },
-  custom_options: function(test) {
+  relaxerror: function(test) {
+    test.expect(3);
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:relaxerror', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf("E001") === -1,
+        'Should not warn about missing a DOCTYPE');
+      test.ok(result.stdout.indexOf("W001") >= 0,
+        'Should warn about missing charset');
+      test.ok(result.stdout.indexOf("1 lint error(s) found across 2 file(s)") >= 0,
+        'Should print correct number of lint errors and files');
+      test.done();
+    });
+  },
+  stoponerror: function(test) {
     test.expect(2);
     grunt.util.spawn({
       grunt: true,
-      args: ['bootlint:custom_options', '--no-color'],
+      args: ['bootlint:stoponerror', '--no-color'],
     }, function(err, result) {
-      test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") === -1,
-        'Should not warn about missing a DOCTYPE');
-      test.ok(result.stdout.indexOf("1 lint error(s) found across 2 file(s)") >= 0,
-        'Should print correct number of lint errors and files');
+      test.ok(result.stdout.indexOf("E001") >= 0,
+        'Should warn about missing a DOCTYPE');
+      test.ok(result.stdout.indexOf("W001") === -1,
+        'Should not warn about anything after E001');
+      test.done();
+    });
+  },
+  stoponwarning: function(test) {
+    test.expect(3);
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:stoponwarning', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf("E001") >= 0,
+        'Should display error of missing a DOCTYPE');
+      test.ok(result.stdout.indexOf("W001") >= 0,
+        'Should warn about W001');
+      test.ok(result.stdout.indexOf("E029") === -1,
+        'Should not warn about anything after W001');
+      test.done();
+    });
+  },
+  stoponboth: function(test) {
+    test.expect(1);
+    grunt.util.spawn({
+      grunt: true,
+      args: ['bootlint:stoponboth', '--no-color'],
+    }, function(err, result) {
+      test.ok(result.stdout.indexOf("E001") === -1,
+        'Should not warn about E001');
       test.done();
     });
   },

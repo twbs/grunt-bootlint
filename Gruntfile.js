@@ -39,14 +39,49 @@ module.exports = function(grunt) {
           ]
         }
       },
-      custom_options: {
+      relaxerror: {
         options: {
           relaxerror: ['E001'],
         },
         files: {
-          'tmp/default_options': [
+          'tmp/relaxerror': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
+          ]
+        }
+      },
+     stoponerror: {
+        options: {
+          stoponerror: true,
+        },
+        files: {
+          'tmp/stoponerror': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+            'test/fixtures/cols-redundant.html',
+          ]
+        }
+      },
+      stoponwarning: {
+        options: {
+          stoponwarning: true,
+        },
+        files: {
+          'tmp/stoponwarning': [
+            'test/fixtures/missing-doctype.html',
+            'test/fixtures/missing-charset.html',
+            'test/fixtures/cols-redundant.html',
+          ]
+        }
+      },
+      stoponboth: {
+        options: {
+          stoponwarning: true,
+          stoponerror: true,
+        },
+        files: {
+          'tmp/stoponboth': [
+            'test/fixtures/**.html',
           ]
         }
       },
@@ -75,7 +110,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'bootlint', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);

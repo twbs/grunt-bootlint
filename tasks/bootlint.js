@@ -16,6 +16,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
     var options = this.options({
       stoponerror: false,
+      stoponwarning: false,
       relaxerror: []
     });
 
@@ -38,8 +39,11 @@ module.exports = function(grunt) {
 
         var src = grunt.file.read(filepath);
         var reporter = function (lint) {
-          var lintId = (lint.id[0] === 'E') ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
+          var isError = (lint.id[0] === 'E');
+          var isWarning = (lint.id[0] === 'W');
+          var lintId = (isError) ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
           var output = false;
+
           if (lint.elements) {
             lint.elements.each(function (_, element) {
               var loc = element.startLocation;
@@ -54,9 +58,11 @@ module.exports = function(grunt) {
             totalErrCount++;
           }
 
-          if (options.stoponerror) {
+          console.log((isError && options.stoponerror) || (isWarning && options.stoponwarning));
+          if ((isError && options.stoponerror) || (isWarning && options.stoponwarning)) {
             grunt.fail.warn('Too many bootlint errors.');
           }
+
         };
 
         bootlint.lintHtml(src, reporter, options.relaxerror);
