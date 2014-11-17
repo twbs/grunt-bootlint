@@ -83,7 +83,7 @@ grunt.initConfig({
 });
 ```
 
-#### options.stoponwarning
+#### options.stoponwarning (will be added in 0.6.0)
 
 * Type: `Boolean`
 * Default: `false`
