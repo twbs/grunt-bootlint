@@ -1,7 +1,7 @@
 {
   "name": "grunt-bootlint",
   "description": "A Grunt wrapper for Bootlint, the HTML linter for Bootstrap projects",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "homepage": "https://github.com/zacechola/grunt-bootlint",
   "author": "Zac Echola <zac.echola@gmail.com>",
   "repository": {
@@ -33,7 +33,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "bootlint": "^0.8.0",
+    "bootlint": "^0.9.1",
     "chalk": "^0.5.1"
   },
   "devDependencies": {
