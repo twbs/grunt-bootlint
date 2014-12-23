@@ -130,6 +130,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 2014-12-23 - v0.6.0: Updates Bootlint to v0.9.1
 - 2014-11-12 - v0.5.3: Fixes issue with `stoponerror` option
 - 2014-11-12 - ~~v0.5.2: Fixes issue with `stoponerror` option~~ *This was a bad release. Please upgrade.*
 - 2014-11-10 - v0.5.1: Displays message when files pass
