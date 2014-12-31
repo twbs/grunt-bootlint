@@ -104,6 +104,27 @@ grunt.initConfig({
 ```
 
 
+#### options.showallerrors (Coming in v0.7.0)
+
+* Type: `Boolean`
+* Default: `false`
+
+Shows all errors and warnings before stopping the task. (Overrides `stoponerror` and `stoponwarning`, above.)
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      showallerrors: true
+    },
+    files: ['test/fixtures/**.html'],
+  },
+});
+```
+
+
 #### options.relaxerror
 
 * Type: `Array`
