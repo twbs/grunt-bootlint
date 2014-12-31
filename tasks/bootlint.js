@@ -17,6 +17,7 @@ module.exports = function(grunt) {
     var options = this.options({
       stoponerror: false,
       stoponwarning: false,
+      showallerrors: false,
       relaxerror: []
     });
 
@@ -53,14 +54,16 @@ module.exports = function(grunt) {
             });
 
           }
+
           if (!output) {
             grunt.log.warn(filepath + ":", lintId, lint.message);
             totalErrCount++;
           }
 
-          console.log((isError && options.stoponerror) || (isWarning && options.stoponwarning));
-          if ((isError && options.stoponerror) || (isWarning && options.stoponwarning)) {
-            grunt.fail.warn('Too many bootlint errors.');
+          if (!options.showallerrors) {
+            if ((isError && options.stoponerror) || (isWarning && options.stoponwarning)) {
+              grunt.fail.warn('Too many bootlint errors.');
+            }
           }
 
         };
@@ -69,9 +72,11 @@ module.exports = function(grunt) {
         totalFileCount++;
       });
 
-      if (totalErrCount > 0) {
+      if (totalErrCount > 0 && !options.showallerrors) {
         grunt.log.writeln().fail(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s).");
         grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
+      } else if (totalErrCount > 0 && options.showallerrors) {
+        grunt.fail.warn(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s). ");
       } else {
         grunt.log.ok(totalFileCount + ' file(s) lint free.');
       }
