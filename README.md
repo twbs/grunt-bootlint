@@ -145,12 +145,63 @@ grunt.initConfig({
 });
 
 ```
+#### optioins.reportXML
+* Default:'path/to/file.xml'
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      reportXML: 'report/bootlint.xml'
+    },
+    files: ['test/fixtures/**.html'],
+  },
+});
+
+```
+
+#### optioins.reportCSV
+* Default:'path/to/file.csv'
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      reportCSV: 'report/bootlint.csv'
+    },
+    files: ['test/fixtures/**.html'],
+  },
+});
+
+```
+
+#### optioins.reportTAP
+* Default:'path/to/file.tap'
+
+Example:
+
+```javascript
+grunt.initConfig({
+  bootlint: {
+    options: {
+      reportTAP: 'report/bootlint.tap'
+    },
+    files: ['test/fixtures/**.html'],
+  },
+});
+
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
 
+- 2015-2-3   - v0.7.0: Added downloadable report formats checkstyle format .xml, pipe delimited .csv, binary format .tap
 - 2015-1-23  - v0.7.0: Updates Bootlint to v0.10.0
 - 2014-12-23 - v0.6.0: Updates Bootlint to v0.9.1
 - 2014-11-12 - v0.5.3: Fixes issue with `stoponerror` option
