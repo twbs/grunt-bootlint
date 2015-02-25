@@ -2,19 +2,19 @@
   "name": "grunt-bootlint",
   "description": "A Grunt wrapper for Bootlint, the HTML linter for Bootstrap projects",
   "version": "0.7.0",
-  "homepage": "https://github.com/zacechola/grunt-bootlint",
+  "homepage": "https://github.com/twbs/grunt-bootlint",
   "author": "Zac Echola <zac.echola@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacechola/grunt-bootlint.git"
+    "url": "https://github.com/twbs/grunt-bootlint.git"
   },
   "bugs": {
-    "url": "https://github.com/zacechola/grunt-bootlint/issues"
+    "url": "https://github.com/twbs/grunt-bootlint/issues"
   },
   "license": [
     {
       "type": "MIT",
-      "url": "https://github.com/zacechola/grunt-bootlint/blob/master/LICENSE-MIT"
+      "url": "https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT"
     }
   ],
   "keywords": [

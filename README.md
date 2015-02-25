@@ -3,9 +3,9 @@
 > A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](http://getbootstrap.com) projects
 
 [![NPM version](https://badge.fury.io/js/grunt-bootlint.svg)](http://badge.fury.io/js/grunt-bootlint)
-[![Build Status](https://travis-ci.org/zacechola/grunt-bootlint.svg?branch=master)](https://travis-ci.org/zacechola/grunt-bootlint)
-[![Dependency Status](https://david-dm.org/zacechola/grunt-bootlint.svg)](https://david-dm.org/zacechola/grunt-bootlint)
-[![devDependency Status](https://david-dm.org/zacechola/grunt-bootlint/dev-status.svg)](https://david-dm.org/zacechola/grunt-bootlint#info=devDependencies)
+[![Build Status](https://travis-ci.org/twbs/grunt-bootlint.svg?branch=master)](https://travis-ci.org/twbs/grunt-bootlint)
+[![Dependency Status](https://david-dm.org/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
+[![devDependency Status](https://david-dm.org/twbs/grunt-bootlint/dev-status.svg)](https://david-dm.org/twbs/grunt-bootlint#info=devDependencies)
 
 [![NPM](https://nodei.co/npm/grunt-bootlint.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/grunt-bootlint/)
 
