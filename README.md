@@ -36,8 +36,8 @@ grunt.initConfig({
       stoponerror: false,
       relaxerror: []
     },
-    files: ['path/to/file.html', 'path/to/*.html'],
-  },
+    files: ['path/to/file.html', 'path/to/*.html']
+  }
 });
 ```
 
@@ -46,18 +46,20 @@ grunt.initConfig({
 ### Usage Examples
 
 #### Default Options
+
 In this example, the default options are used to lint two files for common errors in bootstrap.
 
 ```js
 grunt.initConfig({
   bootlint: {
     options: {
+      relaxerror: [],
+      showallerrors: false,
       stoponerror: false,
-      stoponwarning: false,
-      relaxerror: []
+      stoponwarning: false
     },
-    files: ['test/fixtures/**.html'],
-  },
+    files: ['test/fixtures/*.html']
+  }
 });
 ```
 
@@ -70,19 +72,6 @@ grunt.initConfig({
 
 Breaks out of grunt task on first error problem ID. Use `--force` to force continue.
 
-Example:
-
-```javascript
-grunt.initConfig({
-  bootlint: {
-    options: {
-      stoponerror: true
-    },
-    files: ['test/fixtures/**.html'],
-  },
-});
-```
-
 #### options.stoponwarning
 
 * Type: `Boolean`
@@ -90,40 +79,12 @@ grunt.initConfig({
 
 Breaks out of grunt task on first warning problem ID. Use `--force` to force continue.
 
-Example:
-
-```javascript
-grunt.initConfig({
-  bootlint: {
-    options: {
-      stoponwarning: true
-    },
-    files: ['test/fixtures/**.html'],
-  },
-});
-```
-
-
-#### options.showallerrors (Coming in v0.7.0)
+#### options.showallerrors
 
 * Type: `Boolean`
 * Default: `false`
 
 Shows all errors and warnings before stopping the task. (Overrides `stoponerror` and `stoponwarning`, above.)
-
-Example:
-
-```javascript
-grunt.initConfig({
-  bootlint: {
-    options: {
-      showallerrors: true
-    },
-    files: ['test/fixtures/**.html'],
-  },
-});
-```
-
 
 #### options.relaxerror
 
@@ -132,21 +93,8 @@ grunt.initConfig({
 
 Array of [bootlint problem ID codes](https://github.com/twbs/bootlint/wiki) (`String`s) to explicitly ignore.
 
-Example:
-
-```javascript
-grunt.initConfig({
-  bootlint: {
-    options: {
-      relaxerror: ['W001', 'E001']
-    },
-    files: ['test/fixtures/**.html'],
-  },
-});
-
-```
-
 ## Contributing
+
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
@@ -158,7 +106,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 - 2014-11-10 - v0.5.1: Displays message when files pass
 - 2014-11-10 - v0.5.0: Updates Bootlint, adds line/col numbers to output, quieter output.
 - 2014-11-03 - v0.4.0: Updates Bootlint dependency.
-- 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes
-`relaxerror` to use Bootlint problem IDs**
+- 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes `relaxerror` to use Bootlint problem IDs**
 - 2014-09-25 - v0.2.1: Removes color dependency.
 - 2014-09-25 - v0.2.0: First formal release.
