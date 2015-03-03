@@ -7,8 +7,6 @@
 [![Dependency Status](https://david-dm.org/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
 [![devDependency Status](https://david-dm.org/twbs/grunt-bootlint/dev-status.svg)](https://david-dm.org/twbs/grunt-bootlint#info=devDependencies)
 
-[![NPM](https://nodei.co/npm/grunt-bootlint.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/grunt-bootlint/)
-
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
@@ -47,7 +45,7 @@ grunt.initConfig({
 
 #### Default Options
 
-In this example, the default options are used to lint two files for common errors in bootstrap.
+In this example, the default options are used to lint files for common problems in bootstrap.
 
 ```js
 grunt.initConfig({
@@ -110,3 +108,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 - 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes `relaxerror` to use Bootlint problem IDs**
 - 2014-09-25 - v0.2.1: Removes color dependency.
 - 2014-09-25 - v0.2.0: First formal release.
+
+
+## License and copyright
+
+Code released under [the MIT license](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT).
