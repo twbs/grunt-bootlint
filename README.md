@@ -97,6 +97,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 2015-3-16  - v0.9.0: Updates Bootlint to v0.12.0
 - 2015-2-25  - v0.8.0: Updates Bootlint to v0.11.0
 - 2015-1-23  - v0.7.0: Updates Bootlint to v0.10.0
 - 2014-12-23 - v0.6.0: Updates Bootlint to v0.9.1
@@ -113,3 +114,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## License and copyright
 
 Code released under [the MIT license](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT).
+
