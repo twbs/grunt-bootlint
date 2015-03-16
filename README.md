@@ -97,9 +97,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-- 2015-03-16  - v0.9.0: Updates Bootlint to v0.12.0
-- 2015-02-25  - v0.8.0: Updates Bootlint to v0.11.0
-- 2015-01-23  - v0.7.0: Updates Bootlint to v0.10.0
+- 2015-03-16 - v0.9.0: Updates Bootlint to v0.12.0
+- 2015-02-25 - v0.8.0: Updates Bootlint to v0.11.0
+- 2015-01-23 - v0.7.0: Updates Bootlint to v0.10.0
 - 2014-12-23 - v0.6.0: Updates Bootlint to v0.9.1
 - 2014-11-12 - v0.5.3: Fixes issue with `stoponerror` option
 - 2014-11-12 - ~~v0.5.2: Fixes issue with `stoponerror` option~~ *This was a bad release. Please upgrade.*
