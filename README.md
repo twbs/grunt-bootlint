@@ -4,6 +4,7 @@
 
 [![NPM version](https://badge.fury.io/js/grunt-bootlint.svg)](http://badge.fury.io/js/grunt-bootlint)
 [![Build Status](https://travis-ci.org/twbs/grunt-bootlint.svg?branch=master)](https://travis-ci.org/twbs/grunt-bootlint)
+[![MIT License](https://img.shields.io/npm/l/grunt-bootlint.svg)](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT)
 [![Dependency Status](https://david-dm.org/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
 [![devDependency Status](https://david-dm.org/twbs/grunt-bootlint/dev-status.svg)](https://david-dm.org/twbs/grunt-bootlint#info=devDependencies)
 
