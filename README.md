@@ -87,10 +87,24 @@ Shows all errors and warnings before stopping the task. (Overrides `stoponerror`
 
 #### options.relaxerror
 
-* Type: `Array`
+* Type: `Array|Object`
 * Default: `[]`
 
-Array of [bootlint problem ID codes](https://github.com/twbs/bootlint/wiki) (`String`s) to explicitly ignore.
+Array of [bootlint problem ID codes][] (`String`s) to explicitly ignore.
+
+Object of [bootlint problem ID codes][] as **keys** and filepath masks as array **value**.
+
+##### Example
+
+```
+relaxerror: {
+  'E001': [],
+  'W005': [
+      'path/to/file.html',
+      'file/path/*.mask'
+  ]
+},
+```
 
 ## Contributing
 
@@ -117,3 +131,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 Code released under [the MIT license](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT).
 
+[bootlint problem ID codes]: https://github.com/twbs/bootlint/wiki
