@@ -37,13 +37,13 @@ exports.bootlint = {
         'Should print file path');
       test.ok(result.stdout.indexOf("Document is missing a DOCTYPE declaration") >= 0,
         'Should warn about missing a DOCTYPE');
-      test.ok(result.stdout.indexOf("8 lint error(s) found across 4 file(s)") >= 0,
+      test.ok(result.stdout.indexOf("9 lint error(s) found across 5 file(s)") >= 0,
         'Should print number of lint errors and files');
       test.done();
     });
   },
   relaxerror: function(test) {
-    test.expect(3);
+    test.expect(4);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:relaxerror', '--no-color'],
@@ -52,7 +52,9 @@ exports.bootlint = {
         'Should not warn about missing a DOCTYPE');
       test.ok(result.stdout.indexOf("W001") >= 0,
         'Should warn about missing charset');
-      test.ok(result.stdout.indexOf("1 lint error(s) found across 2 file(s)") >= 0,
+      test.ok(result.stdout.indexOf("W005") === -1,
+        'Should not warn about missing jQuery');
+      test.ok(result.stdout.indexOf("1 lint error(s) found across 3 file(s)") >= 0,
         'Should print correct number of lint errors and files');
       test.done();
     });

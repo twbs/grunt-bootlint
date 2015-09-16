@@ -41,12 +41,18 @@ module.exports = function(grunt) {
       },
       relaxerror: {
         options: {
-          relaxerror: ['E001'],
+          relaxerror: {
+            'E001': [],
+            'W005': [
+                'test/fixtures/missing-jquery.html'
+            ]
+          },
         },
         files: {
           'tmp/relaxerror': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
+            'test/fixtures/missing-jquery.html',
           ]
         }
       },

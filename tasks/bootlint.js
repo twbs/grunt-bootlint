@@ -11,6 +11,7 @@
 module.exports = function(grunt) {
   var bootlint = require('bootlint');
   var chalk = require('chalk');
+  var micromatch = require('micromatch');
 
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
@@ -68,7 +69,8 @@ module.exports = function(grunt) {
 
         };
 
-        bootlint.lintHtml(src, reporter, options.relaxerror);
+        var disabledIds = getDisabledIdsForFilepath(filepath);
+        bootlint.lintHtml(src, reporter, disabledIds);
         totalFileCount++;
       });
 
@@ -81,6 +83,35 @@ module.exports = function(grunt) {
         grunt.log.ok(totalFileCount + ' file(s) lint free.');
       }
     });
-  });
 
+    function getDisabledIdsForFilepath(filepath) {
+      // Relaxerror defined as array without filepaths
+      if (options.relaxerror instanceof Array) {
+        return options.relaxerror;
+      }
+
+      // Relaxerror as object with error IDs as keys and filepaths as values
+      var disabledIds = Object.keys(options.relaxerror);
+
+      // Lookup disabled IDs filepaths
+      var returnIds = disabledIds.filter(function(key) {
+        var paths = options.relaxerror[key];
+
+        // handle 'E001': true, 'E001': []
+        if (!(paths instanceof Array) || paths.length === 0) {
+          return true;
+        }
+
+        // handle 'E001': ['*']
+        if (paths.indexOf('*') !== -1) {
+          return true;
+        }
+
+        // test filepath pattern
+        return micromatch.any(filepath, paths);
+      });
+
+      return returnIds;
+    }
+  });
 };
