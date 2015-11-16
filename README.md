@@ -87,7 +87,7 @@ Shows all errors and warnings before stopping the task. (Overrides `stoponerror`
 
 #### options.relaxerror
 
-* Type: `Array|Object`
+* Type: `Array | Object`
 * Default: `[]`
 
 Array of [bootlint problem ID codes][] (`String`s) to explicitly ignore.
@@ -100,8 +100,8 @@ Object of [bootlint problem ID codes][] as **keys** and filepath masks as array 
 relaxerror: {
   'E001': [],
   'W005': [
-      'path/to/file.html',
-      'file/path/*.mask'
+    'path/to/file.html',
+    'file/path/*.mask'
   ]
 },
 ```
