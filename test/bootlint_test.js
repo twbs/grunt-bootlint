@@ -33,7 +33,7 @@ exports.bootlint = {
         'Should print file path');
       test.ok(result.stdout.indexOf('Document is missing a DOCTYPE declaration') >= 0,
         'Should warn about missing a DOCTYPE');
-      test.ok(result.stdout.indexOf('9 lint error(s) found across 5 file(s)') >= 0,
+      test.ok(result.stdout.indexOf('9 lint errors found across 5 files') >= 0,
         'Should print number of lint errors and files');
       test.done();
     });
@@ -50,7 +50,7 @@ exports.bootlint = {
         'Should warn about missing charset');
       test.ok(result.stdout.indexOf('W005') === -1,
         'Should not warn about missing jQuery');
-      test.ok(result.stdout.indexOf('1 lint error(s) found across 3 file(s)') >= 0,
+      test.ok(result.stdout.indexOf('1 lint error found across 3 files') >= 0,
         'Should print correct number of lint errors and files');
       test.done();
     });
@@ -100,7 +100,7 @@ exports.bootlint = {
       grunt: true,
       args: ['bootlint:showallerrors', '--no-color']
     }, function(err, result) {
-      test.ok(result.stdout.indexOf('8 lint error(s) found across 3 file(s). Use --force to continue.') >= 0,
+      test.ok(result.stdout.indexOf('8 lint errors found across 3 files. Use --force to continue.') >= 0,
         'Should show all errors before hard fail.');
       test.done();
     });
@@ -111,7 +111,7 @@ exports.bootlint = {
       grunt: true,
       args: ['bootlint:showallerrorswithstop', '--no-color']
     }, function(err, result) {
-      test.ok(result.stdout.indexOf('8 lint error(s) found across 3 file(s). Use --force to continue.') >= 0,
+      test.ok(result.stdout.indexOf('8 lint errors found across 3 files. Use --force to continue.') >= 0,
         'Should show all errors before hard fail even if stopon* is set.');
       test.done();
     });
@@ -122,7 +122,7 @@ exports.bootlint = {
       grunt: true,
       args: ['bootlint:pass', '--no-color']
     }, function(err, result) {
-      test.ok(result.stdout.indexOf('1 file(s) lint free.') >= 0,
+      test.ok(result.stdout.indexOf('1 file lint free.') >= 0,
         'Should print correct number of lint free files');
       test.done();
     });

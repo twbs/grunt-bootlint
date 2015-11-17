@@ -73,14 +73,20 @@ module.exports = function(grunt) {
         totalFileCount++;
       });
 
-      if (totalErrCount > 0 && !options.showallerrors) {
-        grunt.log.writeln().fail(totalErrCount + ' lint error(s) found across ' + totalFileCount + ' file(s).');
-        grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
-      } else if (totalErrCount > 0 && options.showallerrors) {
-        grunt.fail.warn(totalErrCount + ' lint error(s) found across ' + totalFileCount + ' file(s).');
+      var errorStr = grunt.util.pluralize(totalErrCount, 'error/errors');
+      var fileStr = grunt.util.pluralize(totalFileCount, 'file/files');
+
+      if (totalErrCount > 0) {
+          if (options.showallerrors) {
+            grunt.fail.warn(totalErrCount + ' lint ' + errorStr + ' found across ' + totalFileCount + ' ' + fileStr + '.');
+          } else {
+            grunt.log.writeln().fail(totalErrCount + ' lint ' + errorStr + ' found across ' + totalFileCount + ' ' + fileStr + '.');
+            grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
+          }
       } else {
-        grunt.log.ok(totalFileCount + ' file(s) lint free.');
+        grunt.log.ok(totalFileCount + ' ' + fileStr + ' lint free.');
       }
+
     });
 
     function getDisabledIdsForFilepath(filepath) {
