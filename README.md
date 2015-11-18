@@ -2,14 +2,14 @@
 
 > A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](http://getbootstrap.com) projects
 
-[![NPM version](https://badge.fury.io/js/grunt-bootlint.svg)](http://badge.fury.io/js/grunt-bootlint)
-[![Build Status](https://travis-ci.org/twbs/grunt-bootlint.svg?branch=master)](https://travis-ci.org/twbs/grunt-bootlint)
+[![NPM version](https://img.shields.io/npm/v/grunt-bootlint.svg)](https://www.npmjs.com/package/grunt-bootlint)
+[![Build Status](https://img.shields.io/travis/twbs/grunt-bootlint.svg?branch=master)](https://travis-ci.org/twbs/grunt-bootlint)
 [![MIT License](https://img.shields.io/npm/l/grunt-bootlint.svg)](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT)
-[![Dependency Status](https://david-dm.org/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
-[![devDependency Status](https://david-dm.org/twbs/grunt-bootlint/dev-status.svg)](https://david-dm.org/twbs/grunt-bootlint#info=devDependencies)
+[![Dependency Status](https://img.shields.io/david/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
+[![devDependency Status](https://img.shields.io/david/dev/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint#info=devDependencies)
 
 ## Getting Started
-This plugin requires Grunt `~0.4.5`
+This plugin requires Grunt `>=0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
