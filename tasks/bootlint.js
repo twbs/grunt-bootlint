@@ -78,7 +78,7 @@ module.exports = function(grunt) {
         grunt.log.writeln().fail(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s).");
         grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
       } else if (totalErrCount > 0 && options.showallerrors) {
-        grunt.fail.warn(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s). ");
+        grunt.fail.warn(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s).");
       } else {
         grunt.log.ok(totalFileCount + ' file(s) lint free.');
       }

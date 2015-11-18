@@ -104,7 +104,7 @@ exports.bootlint = {
       grunt: true,
       args: ['bootlint:showallerrors', '--no-color'],
     }, function(err, result) {
-      test.ok(result.stdout.indexOf("8 lint error(s) found across 3 file(s).  Use --force to continue.") >= 0,
+      test.ok(result.stdout.indexOf("8 lint error(s) found across 3 file(s). Use --force to continue.") >= 0,
         'Should show all errors before hard fail.');
       test.done();
     });
@@ -115,7 +115,7 @@ exports.bootlint = {
       grunt: true,
       args: ['bootlint:showallerrorswithstop', '--no-color'],
     }, function(err, result) {
-      test.ok(result.stdout.indexOf("8 lint error(s) found across 3 file(s).  Use --force to continue.") >= 0,
+      test.ok(result.stdout.indexOf("8 lint error(s) found across 3 file(s). Use --force to continue.") >= 0,
         'Should show all errors before hard fail even if stopon* is set.');
       test.done();
     });
