@@ -1,4 +1,5 @@
 {
+  "camelcase": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
@@ -7,6 +8,8 @@
   "noarg": true,
   "node": true,
   "nonbsp": true,
+  "noempty": true,
+  "quotmark": "single",
   "strict": true,
   "sub": true,
   "undef": true,

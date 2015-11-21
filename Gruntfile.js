@@ -25,108 +25,99 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp']
+      tests: 'tmp'
     },
 
     // Configuration to be run (and then tested).
     bootlint: {
-      default_options: {
-        options: {
-        },
+      defaultOptions: {
         files: {
-          'tmp/default_options': [
-            'test/fixtures/**.html',
-          ]
+          'tmp/defaultOptions': 'test/fixtures/**.html'
         }
       },
       relaxerror: {
         options: {
           relaxerror: {
             'E001': [],
-            'W005': [
-                'test/fixtures/missing-jquery.html'
-            ]
-          },
+            'W005': 'test/fixtures/missing-jquery.html'
+          }
         },
         files: {
           'tmp/relaxerror': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
-            'test/fixtures/missing-jquery.html',
+            'test/fixtures/missing-jquery.html'
           ]
         }
       },
-     stoponerror: {
+      stoponerror: {
         options: {
-          stoponerror: true,
+          stoponerror: true
         },
         files: {
           'tmp/stoponerror': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
-            'test/fixtures/cols-redundant.html',
+            'test/fixtures/cols-redundant.html'
           ]
         }
       },
       stoponwarning: {
         options: {
-          stoponwarning: true,
+          stoponwarning: true
         },
         files: {
           'tmp/stoponwarning': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
-            'test/fixtures/cols-redundant.html',
+            'test/fixtures/cols-redundant.html'
           ]
         }
       },
       showallerrors: {
         options: {
-          showallerrors: true,
+          showallerrors: true
         },
         files: {
           'tmp/stoponwarning': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
-            'test/fixtures/cols-redundant.html',
+            'test/fixtures/cols-redundant.html'
           ]
         }
       },
       showallerrorswithstop: {
         options: {
           showallerrors: true,
-          stoponwarning: true,
+          stoponwarning: true
         },
         files: {
           'tmp/stoponwarning': [
             'test/fixtures/missing-doctype.html',
             'test/fixtures/missing-charset.html',
-            'test/fixtures/cols-redundant.html',
+            'test/fixtures/cols-redundant.html'
           ]
         }
       },
       stoponboth: {
         options: {
           stoponwarning: true,
-          stoponerror: true,
+          stoponerror: true
         },
         files: {
-          'tmp/stoponboth': [
-            'test/fixtures/**.html',
-          ]
+          'tmp/stoponboth': 'test/fixtures/**.html'
         }
       },
       pass: {
-        options: {},
         files: {
           'tmp/pass': 'test/fixtures/pass.html'
-        },
-      },
+        }
+      }
     },
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js']
+      tests: 'test/*_test.js'
     }
 
   });

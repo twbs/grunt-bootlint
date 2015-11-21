@@ -32,9 +32,8 @@ module.exports = function(grunt) {
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
           return false;
-        } else {
-          return true;
         }
+        return true;
 
       })
       .forEach(function(filepath) {
@@ -43,13 +42,13 @@ module.exports = function(grunt) {
         var reporter = function (lint) {
           var isError = (lint.id[0] === 'E');
           var isWarning = (lint.id[0] === 'W');
-          var lintId = (isError) ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
+          var lintId = isError ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
           var output = false;
 
           if (lint.elements) {
             lint.elements.each(function (_, element) {
               var loc = element.startLocation;
-              grunt.log.warn(filepath + ":" + (loc.line + 1) + ":" + (loc.column + 1), lintId, lint.message);
+              grunt.log.warn(filepath + ':' + (loc.line + 1) + ':' + (loc.column + 1), lintId, lint.message);
               totalErrCount++;
               output = true;
             });
@@ -57,7 +56,7 @@ module.exports = function(grunt) {
           }
 
           if (!output) {
-            grunt.log.warn(filepath + ":", lintId, lint.message);
+            grunt.log.warn(filepath + ':', lintId, lint.message);
             totalErrCount++;
           }
 
@@ -75,10 +74,10 @@ module.exports = function(grunt) {
       });
 
       if (totalErrCount > 0 && !options.showallerrors) {
-        grunt.log.writeln().fail(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s).");
+        grunt.log.writeln().fail(totalErrCount + ' lint error(s) found across ' + totalFileCount + ' file(s).');
         grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
       } else if (totalErrCount > 0 && options.showallerrors) {
-        grunt.fail.warn(totalErrCount + " lint error(s) found across " + totalFileCount + " file(s).");
+        grunt.fail.warn(totalErrCount + ' lint error(s) found across ' + totalFileCount + ' file(s).');
       } else {
         grunt.log.ok(totalFileCount + ' file(s) lint free.');
       }
