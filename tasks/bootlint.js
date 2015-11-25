@@ -2,7 +2,7 @@
  * grunt-bootlint
  * https://github.com/twbs/grunt-bootlint
  *
- * Copyright (c) 2014 Zac Echola
+ * Copyright (c) 2014-2015 Zac Echola
  * Licensed under the MIT license.
  */
 
