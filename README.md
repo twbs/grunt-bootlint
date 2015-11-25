@@ -92,7 +92,7 @@ Shows all errors and warnings before stopping the task. (Overrides `stoponerror`
 
 Array of [bootlint problem ID codes][] (`String`s) to explicitly ignore.
 
-Object of [bootlint problem ID codes][] as **keys** and filepath masks as array **value**.
+Object of [bootlint problem ID codes][] as **keys** and filepath globs as array **value**.
 
 ##### Example
 
@@ -101,7 +101,7 @@ relaxerror: {
   'E001': [],
   'W005': [
     'path/to/file.html',
-    'file/path/*.mask'
+    'file/path/*.glob'
   ]
 },
 ```
