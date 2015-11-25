@@ -112,6 +112,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 2015-11-24 - v0.10.0: Updates Bootlint to v0.14.1
 - 2015-06-01 - v0.9.1: Minor update to license metadata.
 - 2015-03-16 - v0.9.0: Updates Bootlint to v0.12.0
 - 2015-02-25 - v0.8.0: Updates Bootlint to v0.11.0
