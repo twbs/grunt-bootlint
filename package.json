@@ -6,7 +6,7 @@
   "author": "Zac Echola <zac.echola@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twbs/grunt-bootlint.git"
+    "url": "git+https://github.com/twbs/grunt-bootlint.git"
   },
   "bugs": {
     "url": "https://github.com/twbs/grunt-bootlint/issues"
@@ -33,12 +33,12 @@
     "micromatch": "^2.2.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-clean": "^0.7.0",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-nodeunit": "^0.4.1"
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-nodeunit": "^1.0.0"
   },
   "peerDependencies": {
-    "grunt": "~0.4.5"
+    "grunt": ">=0.4.5"
   }
 }
