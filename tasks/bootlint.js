@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
+
     var options = this.options({
       stoponerror: false,
       stoponwarning: false,
@@ -24,6 +25,36 @@ module.exports = function(grunt) {
 
     var totalErrCount = 0;
     var totalFileCount = 0;
+
+    function getDisabledIdsForFilepath(filepath) {
+      // Relaxerror defined as array without filepaths
+      if (options.relaxerror instanceof Array) {
+        return options.relaxerror;
+      }
+
+      // Relaxerror as object with error IDs as keys and filepaths as values
+      var disabledIds = Object.keys(options.relaxerror);
+
+      // Lookup disabled IDs filepaths
+      var returnIds = disabledIds.filter(function(key) {
+        var paths = options.relaxerror[key];
+
+        // handle 'E001': true, 'E001': []
+        if (!(paths instanceof Array) || paths.length === 0) {
+          return true;
+        }
+
+        // handle 'E001': ['*']
+        if (paths.indexOf('*') !== -1) {
+          return true;
+        }
+
+        // test filepath pattern
+        return micromatch.any(filepath, paths);
+      });
+
+      return returnIds;
+    }
 
     // Iterate over all specified file groups.
     this.files.forEach(function(f) {
@@ -89,34 +120,5 @@ module.exports = function(grunt) {
 
     });
 
-    function getDisabledIdsForFilepath(filepath) {
-      // Relaxerror defined as array without filepaths
-      if (options.relaxerror instanceof Array) {
-        return options.relaxerror;
-      }
-
-      // Relaxerror as object with error IDs as keys and filepaths as values
-      var disabledIds = Object.keys(options.relaxerror);
-
-      // Lookup disabled IDs filepaths
-      var returnIds = disabledIds.filter(function(key) {
-        var paths = options.relaxerror[key];
-
-        // handle 'E001': true, 'E001': []
-        if (!(paths instanceof Array) || paths.length === 0) {
-          return true;
-        }
-
-        // handle 'E001': ['*']
-        if (paths.indexOf('*') !== -1) {
-          return true;
-        }
-
-        // test filepath pattern
-        return micromatch.any(filepath, paths);
-      });
-
-      return returnIds;
-    }
   });
 };
