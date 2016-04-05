@@ -26,8 +26,9 @@ By contributing your code, you agree to license your contribution under [the MIT
 ## Shipping a release
 1. Update the `version` field in `package.json`
 2. Add an entry in the "Release History" section of `README.md`.
-3. Tag a new [Release](https://github.com/twbs/grunt-bootlint/releases) in GitHub and write a summary of the changes in the Release's description.
-4. `git checkout master` and `git pull`
-5. `git status` to ensure you have no uncommitted local changes or extraneous untracked files.
-6. `npm publish`
-7. Done. Congratulations!
+3. Ensure the changes in (2) and (3) have been committed and pushed to `master`.
+4. Tag a new [Release](https://github.com/twbs/grunt-bootlint/releases) in GitHub and write a summary of the changes in the Release's description.
+5. `git checkout master` and `git pull`
+6. `git status` to ensure you have no uncommitted local changes or extraneous untracked files.
+7. `npm publish`
+8. Done. Congratulations!
