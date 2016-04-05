@@ -20,5 +20,14 @@ Assuming that you don't see any red, you're ready to go. Just be sure to run `gr
 5. Update the documentation to reflect any changes.
 6. Push to your fork and submit a pull request.
 
-### Licensing
+## Licensing
 By contributing your code, you agree to license your contribution under [the MIT License](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT).
+
+## Shipping a release
+1. Update the `version` field in `package.json`
+2. Add an entry in the "Release History" section of `README.md`.
+3. Tag a new [Release](https://github.com/twbs/grunt-bootlint/releases) in GitHub and write a summary of the changes in the Release's description.
+4. `git checkout master` and `git pull`
+5. `git status` to ensure you have no uncommitted local changes or extraneous untracked files.
+6. `npm publish`
+7. Done. Congratulations!
