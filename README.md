@@ -111,6 +111,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+- 2016-04-05 - v0.10.1: Updates for Grunt 1.0.0 compatibility and adds pluralize for files/errors.
 - 2015-11-24 - v0.10.0: Updates Bootlint to v0.14.1 and adds the ability to ignore lint problems on a per-file basis using `relaxerror`.
 - 2015-06-01 - v0.9.1: Minor update to license metadata.
 - 2015-03-16 - v0.9.0: Updates Bootlint to v0.12.0
