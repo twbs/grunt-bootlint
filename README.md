@@ -25,6 +25,7 @@ grunt.loadNpmTasks('grunt-bootlint');
 ## The "bootlint" task
 
 ### Overview
+
 In your project's Gruntfile, add a section named `bootlint` to the data object passed into `grunt.initConfig()`.
 
 ```js
@@ -86,7 +87,7 @@ Shows all errors and warnings before stopping the task. (Overrides `stoponerror`
 
 #### options.relaxerror
 
-* Type: `Array | Object`
+* Type: `Array` | `Object`
 * Default: `[]`
 
 Array of [bootlint problem ID codes][] (`String`s) to explicitly ignore.
@@ -95,7 +96,7 @@ Object of [bootlint problem ID codes][] as **keys** and filepath globs as array 
 
 ##### Example
 
-```
+```js
 relaxerror: {
   'E001': [],
   'W005': [
@@ -111,22 +112,21 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
-- 2016-04-05 - v0.10.1: Updates for Grunt 1.0.0 compatibility and adds pluralize for files/errors.
-- 2015-11-24 - v0.10.0: Updates Bootlint to v0.14.1 and adds the ability to ignore lint problems on a per-file basis using `relaxerror`.
-- 2015-06-01 - v0.9.1: Minor update to license metadata.
-- 2015-03-16 - v0.9.0: Updates Bootlint to v0.12.0
-- 2015-02-25 - v0.8.0: Updates Bootlint to v0.11.0
-- 2015-01-23 - v0.7.0: Updates Bootlint to v0.10.0
-- 2014-12-23 - v0.6.0: Updates Bootlint to v0.9.1
-- 2014-11-12 - v0.5.3: Fixes issue with `stoponerror` option
-- 2014-11-12 - ~~v0.5.2: Fixes issue with `stoponerror` option~~ *This was a bad release. Please upgrade.*
-- 2014-11-10 - v0.5.1: Displays message when files pass
-- 2014-11-10 - v0.5.0: Updates Bootlint, adds line/col numbers to output, quieter output.
-- 2014-11-03 - v0.4.0: Updates Bootlint dependency.
-- 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes `relaxerror` to use Bootlint problem IDs**
-- 2014-09-25 - v0.2.1: Removes color dependency.
-- 2014-09-25 - v0.2.0: First formal release.
-
+* 2016-04-05 - v0.10.1: Updates for Grunt 1.0.0 compatibility and adds pluralize for files/errors.
+* 2015-11-24 - v0.10.0: Updates Bootlint to v0.14.1 and adds the ability to ignore lint problems on a per-file basis using `relaxerror`.
+* 2015-06-01 - v0.9.1: Minor update to license metadata.
+* 2015-03-16 - v0.9.0: Updates Bootlint to v0.12.0
+* 2015-02-25 - v0.8.0: Updates Bootlint to v0.11.0
+* 2015-01-23 - v0.7.0: Updates Bootlint to v0.10.0
+* 2014-12-23 - v0.6.0: Updates Bootlint to v0.9.1
+* 2014-11-12 - v0.5.3: Fixes issue with `stoponerror` option
+* 2014-11-12 - ~~v0.5.2: Fixes issue with `stoponerror` option~~ *This was a bad release. Please upgrade.*
+* 2014-11-10 - v0.5.1: Displays message when files pass
+* 2014-11-10 - v0.5.0: Updates Bootlint, adds line/col numbers to output, quieter output.
+* 2014-11-03 - v0.4.0: Updates Bootlint dependency.
+* 2014-10-17 - v0.3.0: Basic support for Bootlint 0.5.0. **Changes `relaxerror` to use Bootlint problem IDs**
+* 2014-09-25 - v0.2.1: Removes color dependency.
+* 2014-09-25 - v0.2.0: First formal release.
 
 ## License and copyright
 
