@@ -71,8 +71,8 @@ module.exports = function(grunt) {
 
         var src = grunt.file.read(filepath);
         var reporter = function (lint) {
-          var isError = (lint.id[0] === 'E');
-          var isWarning = (lint.id[0] === 'W');
+          var isError = lint.id[0] === 'E';
+          var isWarning = lint.id[0] === 'W';
           var lintId = isError ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
           var output = false;
 
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
           }
 
           if (!options.showallerrors) {
-            if ((isError && options.stoponerror) || (isWarning && options.stoponwarning)) {
+            if (isError && options.stoponerror || isWarning && options.stoponwarning) {
               grunt.fail.warn('Too many bootlint errors.');
             }
           }
