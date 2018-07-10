@@ -9,22 +9,20 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var bootlint = require('bootlint');
-  var chalk = require('chalk');
-  var micromatch = require('micromatch');
-
+  const bootlint = require('bootlint');
+  const chalk = require('chalk');
+  const micromatch = require('micromatch');
 
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
-
-    var options = this.options({
+    const options = this.options({
       stoponerror: false,
       stoponwarning: false,
       showallerrors: false,
       relaxerror: []
     });
 
-    var totalErrCount = 0;
-    var totalFileCount = 0;
+    let totalErrCount = 0;
+    let totalFileCount = 0;
 
     function getDisabledIdsForFilepath(filepath) {
       // Relaxerror defined as array without filepaths
@@ -33,11 +31,11 @@ module.exports = function(grunt) {
       }
 
       // Relaxerror as object with error IDs as keys and filepaths as values
-      var disabledIds = Object.keys(options.relaxerror);
+      const disabledIds = Object.keys(options.relaxerror);
 
       // Lookup disabled IDs filepaths
-      var returnIds = disabledIds.filter(function(key) {
-        var paths = options.relaxerror[key];
+      const returnIds = disabledIds.filter((key) => {
+        const paths = options.relaxerror[key];
 
         // handle 'E001': true, 'E001': []
         if (!(paths instanceof Array) || paths.length === 0) {
@@ -45,7 +43,7 @@ module.exports = function(grunt) {
         }
 
         // handle 'E001': ['*']
-        if (paths.indexOf('*') !== -1) {
+        if (paths.includes('*')) {
           return true;
         }
 
@@ -57,65 +55,67 @@ module.exports = function(grunt) {
     }
 
     // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
+    this.files.forEach((f) => {
 
-      f.src.filter(function(filepath) {
+      f.src.filter((filepath) => {
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
+          grunt.log.warn(`Source file "${filepath}" not found.`);
           return false;
         }
         return true;
 
       })
-      .forEach(function(filepath) {
+        .forEach((filepath) => {
 
-        var src = grunt.file.read(filepath);
-        var reporter = function (lint) {
-          var isError = lint.id[0] === 'E';
-          var isWarning = lint.id[0] === 'W';
-          var lintId = isError ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
-          var output = false;
+          const src = grunt.file.read(filepath);
+          const reporter = (lint) => {
+            const isError = lint.id[0] === 'E';
+            const isWarning = lint.id[0] === 'W';
+            const lintId = isError ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
+            let output = false;
 
-          if (lint.elements) {
-            lint.elements.each(function (_, element) {
-              var loc = element.startLocation;
-              grunt.log.warn(filepath + ':' + (loc.line + 1) + ':' + (loc.column + 1), lintId, lint.message);
-              totalErrCount++;
-              output = true;
-            });
+            if (lint.elements) {
+              lint.elements.each((_, element) => {
+                const loc = element.startLocation;
 
-          }
+                grunt.log.warn(`${filepath}:${loc.line + 1}:${loc.column + 1}`, lintId, lint.message);
+                totalErrCount++;
+                output = true;
+              });
 
-          if (!output) {
-            grunt.log.warn(filepath + ':', lintId, lint.message);
-            totalErrCount++;
-          }
-
-          if (!options.showallerrors) {
-            if (isError && options.stoponerror || isWarning && options.stoponwarning) {
-              grunt.fail.warn('Too many bootlint errors.');
             }
-          }
 
-        };
+            if (!output) {
+              grunt.log.warn(`${filepath}:`, lintId, lint.message);
+              totalErrCount++;
+            }
 
-        var disabledIds = getDisabledIdsForFilepath(filepath);
-        bootlint.lintHtml(src, reporter, disabledIds);
-        totalFileCount++;
-      });
+            if (!options.showallerrors) {
+              if (isError && options.stoponerror || isWarning && options.stoponwarning) {
+                grunt.fail.warn('Too many bootlint errors.');
+              }
+            }
 
-      var errorStr = grunt.util.pluralize(totalErrCount, 'error/errors');
-      var fileStr = grunt.util.pluralize(totalFileCount, 'file/files');
+          };
+
+          const disabledIds = getDisabledIdsForFilepath(filepath);
+
+          bootlint.lintHtml(src, reporter, disabledIds);
+          totalFileCount++;
+        });
+
+      const errorStr = grunt.util.pluralize(totalErrCount, 'error/errors');
+      const fileStr = grunt.util.pluralize(totalFileCount, 'file/files');
 
       if (totalErrCount > 0) {
         if (options.showallerrors) {
-          grunt.fail.warn(totalErrCount + ' lint ' + errorStr + ' found across ' + totalFileCount + ' ' + fileStr + '.');
+          grunt.fail.warn(`${totalErrCount} lint ${errorStr} found across ${totalFileCount} ${fileStr}.`);
         } else {
-          grunt.log.writeln().fail(totalErrCount + ' lint ' + errorStr + ' found across ' + totalFileCount + ' ' + fileStr + '.');
+          grunt.log.writeln().fail(`${totalErrCount} lint ${errorStr} found across ${totalFileCount} ${fileStr}.`);
           grunt.log.writeln().fail('For details, look up the lint problem IDs in the Bootlint wiki: https://github.com/twbs/bootlint/wiki');
         }
       } else {
-        grunt.log.ok(totalFileCount + ' ' + fileStr + ' lint free.');
+        grunt.log.ok(`${totalFileCount} ${fileStr} lint free.`);
       }
 
     });
