@@ -21,7 +21,7 @@
     "node": ">=6"
   },
   "files": [
-    "tasks",
+    "tasks/*.js",
     "LICENSE-MIT"
   ],
   "scripts": {
