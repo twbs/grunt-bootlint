@@ -8,11 +8,11 @@
 
 'use strict';
 
-module.exports = function(grunt) {
-  const bootlint = require('bootlint');
-  const chalk = require('chalk');
-  const micromatch = require('micromatch');
+const bootlint = require('bootlint');
+const chalk = require('chalk');
+const micromatch = require('micromatch');
 
+module.exports = function(grunt) {
   grunt.registerMultiTask('bootlint', 'An HTML linter for Bootstrap projects', function() {
     const options = this.options({
       stoponerror: false,
