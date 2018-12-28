@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     function getDisabledIdsForFilepath(filepath) {
       // Relaxerror defined as array without filepaths
-      if (options.relaxerror instanceof Array) {
+      if (Array.isArray(options.relaxerror)) {
         return options.relaxerror;
       }
 
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         const paths = options.relaxerror[key];
 
         // handle 'E001': true, 'E001': []
-        if (!(paths instanceof Array) || paths.length === 0) {
+        if (!Array.isArray(paths) || paths.length === 0) {
           return true;
         }
 
@@ -56,17 +56,14 @@ module.exports = function(grunt) {
 
     // Iterate over all specified file groups.
     this.files.forEach((f) => {
-
       f.src.filter((filepath) => {
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn(`Source file "${filepath}" not found.`);
           return false;
         }
         return true;
-
       })
         .forEach((filepath) => {
-
           const src = grunt.file.read(filepath);
           const reporter = (lint) => {
             const isError = lint.id[0] === 'E';
@@ -82,7 +79,6 @@ module.exports = function(grunt) {
                 totalErrCount++;
                 output = true;
               });
-
             }
 
             if (!output) {
@@ -91,11 +87,10 @@ module.exports = function(grunt) {
             }
 
             if (!options.showallerrors) {
-              if (isError && options.stoponerror || isWarning && options.stoponwarning) {
+              if ((isError && options.stoponerror) || (isWarning && options.stoponwarning)) {
                 grunt.fail.warn('Too many bootlint errors.');
               }
             }
-
           };
 
           const disabledIds = getDisabledIdsForFilepath(filepath);
@@ -117,8 +112,6 @@ module.exports = function(grunt) {
       } else {
         grunt.log.ok(`${totalFileCount} ${fileStr} lint free.`);
       }
-
     });
-
   });
 };

@@ -9,7 +9,6 @@
 'use strict';
 
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     jshint: {
@@ -136,5 +135,4 @@ module.exports = function(grunt) {
 
   // By default, run all tests.
   grunt.registerTask('default', 'test');
-
 };
