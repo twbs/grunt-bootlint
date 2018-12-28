@@ -4,7 +4,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/grunt-bootlint.svg)](https://www.npmjs.com/package/grunt-bootlint)
 [![Build Status](https://img.shields.io/travis/twbs/grunt-bootlint.svg?branch=master)](https://travis-ci.org/twbs/grunt-bootlint)
-[![MIT License](https://img.shields.io/npm/l/grunt-bootlint.svg)](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT)
+[![MIT License](https://img.shields.io/npm/l/grunt-bootlint.svg)](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE)
 [![Dependency Status](https://img.shields.io/david/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint#info=devDependencies)
 
@@ -130,6 +130,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License and copyright
 
-Code released under [the MIT license](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE-MIT).
+Code released under [the MIT license](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE).
 
 [bootlint problem ID codes]: https://github.com/twbs/bootlint/wiki
