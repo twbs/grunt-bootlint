@@ -27,8 +27,8 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "bootlint": "^0.15.1",
-    "chalk": "^2.4.1",
+    "bootlint": "^0.16.1",
+    "chalk": "^2.4.2",
     "micromatch": "^3.1.10"
   },
   "devDependencies": {
