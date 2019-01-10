@@ -24,11 +24,12 @@ const grunt = require('grunt');
 
 exports.bootlint = {
   defaultOptions(test) {
-    test.expect(3);
+    test.expect(4);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:defaultOptions', '--no-color']
     }, (err, result) => {
+      test.strictEqual(err, null);
       test.ok(result.stdout.includes('test/fixtures/missing-doctype.html'),
         'Should print file path');
       test.ok(result.stdout.includes('Document is missing a DOCTYPE declaration'),
@@ -39,11 +40,12 @@ exports.bootlint = {
     });
   },
   relaxerror(test) {
-    test.expect(4);
+    test.expect(5);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:relaxerror', '--no-color']
     }, (err, result) => {
+      test.strictEqual(err, null);
       test.ok(!result.stdout.includes('E001'),
         'Should not warn about missing a DOCTYPE');
       test.ok(result.stdout.includes('W001'),
@@ -56,11 +58,12 @@ exports.bootlint = {
     });
   },
   stoponerror(test) {
-    test.expect(2);
+    test.expect(3);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:stoponerror', '--no-color']
     }, (err, result) => {
+      test.throws(err);
       test.ok(result.stdout.includes('E001'),
         'Should warn about missing a DOCTYPE');
       test.ok(!result.stdout.includes('W001'),
@@ -69,11 +72,12 @@ exports.bootlint = {
     });
   },
   stoponwarning(test) {
-    test.expect(3);
+    test.expect(4);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:stoponwarning', '--no-color']
     }, (err, result) => {
+      test.throws(err);
       test.ok(result.stdout.includes('E001'),
         'Should display error of missing a DOCTYPE');
       test.ok(result.stdout.includes('W001'),
@@ -84,44 +88,48 @@ exports.bootlint = {
     });
   },
   stoponboth(test) {
-    test.expect(1);
+    test.expect(2);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:stoponboth', '--no-color']
     }, (err, result) => {
+      test.throws(err);
       test.ok(!result.stdout.includes('E001'),
         'Should not warn about E001');
       test.done();
     });
   },
   showallerrors(test) {
-    test.expect(1);
+    test.expect(2);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:showallerrors', '--no-color']
     }, (err, result) => {
+      test.throws(err);
       test.ok(result.stdout.includes('8 lint errors found across 3 files. Use --force to continue.'),
         'Should show all errors before hard fail.');
       test.done();
     });
   },
   showallerrorswithstop(test) {
-    test.expect(1);
+    test.expect(2);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:showallerrorswithstop', '--no-color']
     }, (err, result) => {
+      test.throws(err);
       test.ok(result.stdout.includes('8 lint errors found across 3 files. Use --force to continue.'),
         'Should show all errors before hard fail even if stopon* is set.');
       test.done();
     });
   },
   pass(test) {
-    test.expect(1);
+    test.expect(2);
     grunt.util.spawn({
       grunt: true,
       args: ['bootlint:pass', '--no-color']
     }, (err, result) => {
+      test.strictEqual(err, null);
       test.ok(result.stdout.includes('1 file lint free.'),
         'Should print correct number of lint free files');
       test.done();

@@ -67,7 +67,7 @@
     ],
     "global-require": "error",
     "guard-for-in": "error",
-    "handle-callback-err": "off",
+    "handle-callback-err": "error",
     "indent": [
       "error",
       2,
