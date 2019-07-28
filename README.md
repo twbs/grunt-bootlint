@@ -1,6 +1,6 @@
 # grunt-bootlint
 
-> A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](http://getbootstrap.com) projects
+> A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](https://getbootstrap.com) projects
 
 [![NPM version](https://img.shields.io/npm/v/grunt-bootlint.svg)](https://www.npmjs.com/package/grunt-bootlint)
 [![Build Status](https://img.shields.io/travis/twbs/grunt-bootlint/master.svg)](https://travis-ci.org/twbs/grunt-bootlint)
@@ -10,7 +10,7 @@
 
 ## Getting Started
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](https://gruntjs.com/) before, be sure to check out the [Getting Started](https://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](https://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-bootlint --save-dev
@@ -108,7 +108,7 @@ relaxerror: {
 
 ## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](https://gruntjs.com/).
 
 ## Release History
 
