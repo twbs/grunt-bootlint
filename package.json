@@ -1,7 +1,7 @@
 {
   "name": "grunt-bootlint",
   "description": "A Grunt wrapper for Bootlint, the HTML linter for Bootstrap projects",
-  "version": "0.12.2",
+  "version": "0.12.3",
   "homepage": "https://github.com/twbs/grunt-bootlint",
   "author": "Zac Echola <zac.echola@gmail.com>",
   "repository": {
