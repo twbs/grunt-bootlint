@@ -65,9 +65,10 @@ module.exports = function(grunt) {
       })
         .forEach((filepath) => {
           const src = grunt.file.read(filepath);
+          const disabledIds = getDisabledIdsForFilepath(filepath);
           const reporter = (lint) => {
-            const isError = lint.id[0] === 'E';
-            const isWarning = lint.id[0] === 'W';
+            const isError = lint.id.startsWith('E');
+            const isWarning = lint.id.startsWith('W');
             const lintId = isError ? chalk.bgGreen.white(lint.id) : chalk.bgRed.white(lint.id);
             let output = false;
 
@@ -92,8 +93,6 @@ module.exports = function(grunt) {
               }
             }
           };
-
-          const disabledIds = getDisabledIdsForFilepath(filepath);
 
           bootlint.lintHtml(src, reporter, disabledIds);
           totalFileCount++;
