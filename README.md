@@ -1,9 +1,9 @@
 # grunt-bootlint
 
-> A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](https://getbootstrap.com) projects
+> A Grunt wrapper for [Bootlint](https://www.npmjs.org/package/bootlint), the HTML linter for [Bootstrap](https://getbootstrap.com/) projects
 
 [![NPM version](https://img.shields.io/npm/v/grunt-bootlint.svg)](https://www.npmjs.com/package/grunt-bootlint)
-![Build Status](https://github.com/twbs/grunt-bootlint/workflows/Tests/badge.svg)
+[![Build Status](https://github.com/twbs/grunt-bootlint/workflows/Tests/badge.svg)](https://github.com/twbs/grunt-bootlint/actions?workflow=Tests)
 [![MIT License](https://img.shields.io/npm/l/grunt-bootlint.svg)](https://github.com/twbs/grunt-bootlint/blob/master/LICENSE)
 [![Dependency Status](https://img.shields.io/david/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/grunt-bootlint.svg)](https://david-dm.org/twbs/grunt-bootlint?type=dev)
